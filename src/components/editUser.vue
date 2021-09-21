@@ -4,34 +4,34 @@
     <form class="edit-form">
       <label class="edit-form  edit-form__label">First Name:</label>
       <input
-        class="edit-form  edit-form__input"
+        class="edit-form__input"
         placeholder="localstore.user.fname"
         v-model="localstore.user.fname"
         type="text"
         required/>
-      <label class="edit-form  edit-form__label">Last Name:</label>
+      <label class="edit-form__label">Last Name:</label>
       <input
-        class="edit-form  edit-form__input"
+        class="edit-form__input"
         placeholder="localstore.user.lname"
         v-model="localstore.user.lname"
         type="text"
         required/>
-      <label class="edit-form  edit-form__label">Age</label>
+      <label class="edit-form__label">Age</label>
       <input
-        class="edit-form  edit-form__input"
+        class="edit-form__input"
         placeholder="localstore.user.age"
         v-model="localstore.user.age"
         type="number"
         required />
-      <label class="edit-form  edit-form__label">Gender</label>
-      <select class="edit-form  edit-form__select" v-model="localstore.user.gender">
+      <label class="edit-form__label">Gender</label>
+      <select class="edit-form__select" v-model="localstore.user.gender">
         <option>Male</option>
         <option>Female</option>
         <option>Others</option>
       </select>
     </form>
 
-    <div class="button_property">
+    <div class="edit-form__submit">
       <vueButton :disabled="isDisabled()" @click="updateUser" btnText="SUBMIT" />
     </div>
   </div>
@@ -103,7 +103,7 @@ export default {
     width: 100%;
     padding: .5rem;
   }
-  .button_property {
+  .edit-form__submit {
     text-align: center;
     margin-top: 2rem;
   }

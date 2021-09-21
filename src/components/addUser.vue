@@ -2,21 +2,21 @@
   <div class="add-user">
     <h2 class="header">Add a new User</h2>
     <form class="add-form">
-      <label class="add-form  add-form__label">First Name:</label>
-      <input class="add-form  add-form__input" v-model="newUser.fname" type="text" required />
-      <label class="add-form  add-form__label">Last Name:</label>
-      <input class="add-form  add-form__input" v-model="newUser.lname" type="text" required />
-      <label class="add-form  add-form__label">Age</label>
-      <input class="add-form  add-form__input" v-model="newUser.age" type="number" required />
-      <label class="add-form  add-form__label">Gender</label>
-      <select class="add-form  add-form__select" v-model="newUser.gender">
+      <label class="add-form__label">First Name:</label>
+      <input class="add-form__input" v-model="newUser.fname" type="text" required />
+      <label class="add-form__label">Last Name:</label>
+      <input class="add-form__input" v-model="newUser.lname" type="text" required />
+      <label class="add-form__label">Age</label>
+      <input class="add-form__input" v-model="newUser.age" type="number" required />
+      <label class="add-form__label">Gender</label>
+      <select class="add-form__select" v-model="newUser.gender">
         <option>Male</option>
         <option>Female</option>
         <option>Others</option>
       </select>
     </form>
 
-    <div class="button_property">
+    <div class="add-form__submit">
       <vueButton :disabled="isDisabled()" @click="storeUser" btnText="ADD"  />
     </div>
   </div>
@@ -87,7 +87,7 @@ export default {
   h3 {
     margin-top: 1rem;
   }
-  .button_property {
+  .add-form__submit {
     text-align: center;
     margin-top: 2rem;
   }
