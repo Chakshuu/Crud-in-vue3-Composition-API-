@@ -6,12 +6,11 @@
 
 <script>
 export default {
-  // name: 'vueButton',
+  name: 'vueButton',
   props: {
     btnText: {
       type: String,
       required: true,
-      // default: 'Default Text',
     },
   },
 };
@@ -26,6 +25,5 @@ export default {
   --mdc-theme-primary: #FEDBD0;
   --mdc-theme-on-primary: #442C2E;
   --mdc-theme--primary-bg: #fdfbfb;
-  /* button.ink-color(#84565E); */
 }
 </style>

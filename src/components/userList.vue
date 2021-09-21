@@ -104,8 +104,8 @@ export default {
   }
   .c-button {
     text-align: center;
-    padding: 2px 4px;
-    margin: 5px 10px;
+    padding: .1rem .1rem .2rem;
+    margin: 1rem .2rem 1rem .2rem;
   }
   .c-button--edit {
     color: white;
@@ -115,18 +115,14 @@ export default {
     color: white;
     background-color: red;
   }
-  .c-button--add {
-    padding: 8px;
-    margin-top: 20px;
-  }
   .table_layout {
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
-    font-size: 0.9em;
+    font-size: 1em;
     font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    min-width: 10rem .5rem;
+    box-shadow: 0 0 5rem .5rem rgba(0, 0, 0, 0.15);
     text-align: center;
   }
 
@@ -136,10 +132,10 @@ export default {
 
   .table_layout th,
   .table_layout td {
-    padding: 12px 15px;
+    padding: .4rem .8rem .2rem;
   }
   .table_layout tbody tr {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: .2rem .3rem solid #dddddd;
   }
   .add-link {
     color: black;
@@ -148,8 +144,5 @@ export default {
   .edit-link {
       color: white;
       text-decoration-line: none;
-  }
-  .random-div {
-      background-color: aqua;
   }
 </style>

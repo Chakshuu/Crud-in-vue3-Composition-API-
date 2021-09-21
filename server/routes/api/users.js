@@ -68,10 +68,7 @@ router.get('/:id', async (req, res) => {
   const users = await getUserCollection();
   users.findOne({ _id: new mongodb.ObjectId(req.params.id) }, (err, data) => {
     if (!err) {
-      res.send({
-        data,
-        message: 'User fetched successfully',
-      });
+      res.json(data);
     } else {
       res.sendStatus(500);
     }

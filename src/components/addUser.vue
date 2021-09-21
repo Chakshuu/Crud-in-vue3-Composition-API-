@@ -3,13 +3,13 @@
     <h2 class="header">Add a new User</h2>
     <form>
       <label>First Name:</label>
-      <input v-model="newUser.fname" type="text" required />
+      <input class="userInput" v-model="newUser.fname" type="text" required />
       <label>Last Name:</label>
-      <input v-model="newUser.lname" type="text" required />
+      <input class="userInput" v-model="newUser.lname" type="text" required />
       <label>Age</label>
-      <input v-model="newUser.age" type="number" required />
+      <input class="userInput" v-model="newUser.age" type="number" required />
       <label>Gender</label>
-      <select v-model="newUser.gender">
+      <select class="userInput  userInput--select" v-model="newUser.gender">
         <option>Male</option>
         <option>Female</option>
         <option>Others</option>
@@ -42,7 +42,11 @@ export default {
     });
 
     const isDisabled = () => {
-      console.log('Disabled function called');
+      if (newUser.fname !== '' && newUser.lname !== '' && newUser.age !== '' && newUser.gender !== '') {
+        return false;
+      }
+
+      return true;
     };
     const storeUser = async () => {
       await UserService.insertUser(newUser.fname, newUser.lname, newUser.age, newUser.gender);
@@ -57,36 +61,36 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
   .add-user * {
     box-sizing: border-box;
   }
-
   .add-user {
-    margin: 20px auto;
-    max-width: 500px;
+    margin: 1rem auto;
+    max-width: 35rem;
+  }
+  .header {
+    text-align: center;
   }
   label {
     display: block;
-    margin: 20px 0 10px;
+    margin: .8rem 0 1.5rem;
   }
-  input,
-  select {
+  .userInput {
     display: block;
     width: 100%;
-    padding: 8px;
+    padding: .5rem;
   }
-
+  .userInput--select {
+    display: block;
+    width: 100%;
+    padding: .5rem;
+  }
   h3 {
-    margin-top: 10px;
+    margin-top: 1rem;
   }
   .button_property {
     text-align: center;
-    margin-top: 10px;
-  }
-
-  .button {
-    text-align: center;
-    padding: 10px 40px;
+    margin-top: 2rem;
   }
 </style>

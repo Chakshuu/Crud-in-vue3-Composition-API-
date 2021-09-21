@@ -1,27 +1,30 @@
 <template>
-  <div id="edit-user">
+  <div class="edit-user">
     <h2 class="header">Edit the User</h2>
     <form>
       <label>First Name:</label>
       <input
+        class="userInput"
         placeholder="localstore.user.fname"
         v-model="localstore.user.fname"
         type="text"
         required/>
       <label>Last Name:</label>
       <input
+        class="userInput"
         placeholder="localstore.user.lname"
         v-model="localstore.user.lname"
         type="text"
         required/>
       <label>Age</label>
       <input
+        class="userInput"
         placeholder="localstore.user.age"
         v-model="localstore.user.age"
         type="number"
         required />
       <label>Gender</label>
-      <select  v-model="localstore.user.gender">
+      <select class="userInput  userInput--select" v-model="localstore.user.gender">
         <option>Male</option>
         <option>Female</option>
         <option>Others</option>
@@ -58,7 +61,11 @@ export default {
       localstore.user = res.data;
     });
     const isDisabled = () => {
-      console.log('Disabled function called');
+      if (localstore.user.fname !== '' && localstore.user.lname !== '' && localstore.user.age !== '' && localstore.user.gender !== '') {
+        return false;
+      }
+
+      return true;
     };
     const updateUser = async () => {
       await UserService.updateUser(localstore.id, localstore.user);
@@ -73,40 +80,36 @@ export default {
 };
 </script>
 
-<style>
-  #edit-user * {
+<style scoped>
+  .edit-user * {
     box-sizing: border-box;
   }
-
-  #edit-user {
-    margin: 20px auto;
-    max-width: 500px;
+  .edit-user {
+    margin: 1rem auto;
+    max-width: 35rem;
+  }
+  .header {
+    text-align: center;
   }
   label {
     display: block;
-    margin: 20px 0 10px;
+    margin: .8rem 0 1.5rem;
   }
-  input,
-  select {
+  .userInput {
     display: block;
     width: 100%;
-    padding: 8px;
+    padding: .5rem;
   }
-  #preview {
-    padding: 10px 20px;
-    border: 1px dotted black;
-    margin: 20px 0;
+  .userInput--select {
+    display: block;
+    width: 100%;
+    padding: .5rem;
   }
   h3 {
-    margin-top: 10px;
+    margin-top: 1rem;
   }
   .button_property {
     text-align: center;
-    margin-top: 10px;
-  }
-
-  .button {
-    text-align: center;
-    padding: 10px 40px;
+    margin-top: 2rem;
   }
 </style>
