@@ -36,9 +36,9 @@
 
 <script>
 
-import { onMounted, reactive } from 'vue';
+import { onBeforeMount, reactive } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { useStore } from 'vuex';
+import UserService from '../UserService';
 import vueButton from '../shared/vueButton.vue';
 
 export default {
@@ -46,24 +46,23 @@ export default {
     vueButton,
   },
   setup() {
-    const store = useStore();
     const router = useRouter();
     const route = useRoute();
     const localstore = reactive({
       id: '',
       user: {},
     });
-    onMounted(() => {
-      localstore.id = parseInt(route.params.id, 10);
-      localstore.user = store.getters.getUser(localstore.id);
+    onBeforeMount(async () => {
+      localstore.id = route.params.id;
+      const res = await UserService.fetchUser(localstore.id);
+      localstore.user = res.data;
     });
     const isDisabled = () => {
-      // console.log('Disabled function called');
+      console.log('Disabled function called');
     };
-    const updateUser = () => {
-      // localstore.user.id = localstore.id;
+    const updateUser = async () => {
+      await UserService.updateUser(localstore.id, localstore.user);
       router.push({ name: 'user-list' });
-      store.commit('updateUser', localstore.user);
     };
     return {
       localstore,

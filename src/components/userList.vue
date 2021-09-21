@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 <template>
   <div>
     <div class="c-user-list">
@@ -14,7 +13,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="active-row" v-for="(user, index) in users" :key="index">
+          <tr class="active-row" v-for="(user, index) in users"
+              :key = "user._id"
+              :item = "user"
+              :index = "index"
+             >
             <th>{{ index + 1 }}</th>
             <td>{{ user.fname }}</td>
             <td>{{ user.lname }}</td>
@@ -25,12 +28,12 @@
                 <button
                   class="c-button  c-button--edit">
                   <router-link :to="
-                  {name: 'edit-user', params: { id: user.id }}" class="edit-link">
+                  {name: 'edit-user', params: { id: user._id }}" class="edit-link">
                   Edit
                 </router-link>
                 </button>
                 <button
-                  @click.prevent="deleteUser(index)"
+                  @click.prevent="deleteUser(user._id)"
                   class="c-button  c-button--delete"
                 >
                   Delete
@@ -49,9 +52,9 @@
 </template>
 
 <script>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import UserService from '../UserService';
 import vueButton from '../shared/vueButton.vue';
 
 export default {
@@ -60,13 +63,24 @@ export default {
   },
   setup() {
     const router = useRouter();
-    const store = useStore();
-    const users = computed(() => store.state.USER_STORE.users);
+    const users = ref([]);
+    const error = ref('');
     const addUser = () => {
       router.push({ name: 'add-user' });
     };
-    const deleteUser = (index) => {
-      users.value.splice(index, 1);
+
+    const getUser = async () => {
+      try {
+        users.value = await UserService.getUser();
+      } catch (err) {
+        error.value = err.message;
+      }
+    };
+    onMounted(getUser);
+
+    const deleteUser = async (id) => {
+      await UserService.deleteUser(id);
+      users.value = await UserService.getUser();
     };
 
     return {

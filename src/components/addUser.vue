@@ -25,7 +25,7 @@
 <script>
 import { useRouter } from 'vue-router';
 import { reactive } from 'vue';
-import { useStore } from 'vuex';
+import UserService from '../UserService';
 import vueButton from '../shared/vueButton.vue';
 
 export default {
@@ -33,10 +33,8 @@ export default {
     vueButton,
   },
   setup() {
-    const store = useStore();
     const router = useRouter();
     const newUser = reactive({
-      id: Math.floor(Math.random() * 1000) + 1,
       fname: ' ',
       lname: ' ',
       age: '',
@@ -46,9 +44,9 @@ export default {
     const isDisabled = () => {
       console.log('Disabled function called');
     };
-    const storeUser = () => {
+    const storeUser = async () => {
+      await UserService.insertUser(newUser.fname, newUser.lname, newUser.age, newUser.gender);
       router.push({ name: 'user-list' });
-      store.commit('storeUser', newUser);
     };
     return {
       newUser,
