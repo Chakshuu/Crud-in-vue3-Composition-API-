@@ -1,15 +1,15 @@
 <template>
   <div class="add-user">
     <h2 class="header">Add a new User</h2>
-    <form>
-      <label>First Name:</label>
-      <input class="userInput" v-model="newUser.fname" type="text" required />
-      <label>Last Name:</label>
-      <input class="userInput" v-model="newUser.lname" type="text" required />
-      <label>Age</label>
-      <input class="userInput" v-model="newUser.age" type="number" required />
-      <label>Gender</label>
-      <select class="userInput  userInput--select" v-model="newUser.gender">
+    <form class="add-form">
+      <label class="add-form  add-form__label">First Name:</label>
+      <input class="add-form  add-form__input" v-model="newUser.fname" type="text" required />
+      <label class="add-form  add-form__label">Last Name:</label>
+      <input class="add-form  add-form__input" v-model="newUser.lname" type="text" required />
+      <label class="add-form  add-form__label">Age</label>
+      <input class="add-form  add-form__input" v-model="newUser.age" type="number" required />
+      <label class="add-form  add-form__label">Gender</label>
+      <select class="add-form  add-form__select" v-model="newUser.gender">
         <option>Male</option>
         <option>Female</option>
         <option>Others</option>
@@ -62,9 +62,6 @@ export default {
 </script>
 
 <style scoped>
-  .add-user * {
-    box-sizing: border-box;
-  }
   .add-user {
     margin: 1rem auto;
     max-width: 35rem;
@@ -72,16 +69,17 @@ export default {
   .header {
     text-align: center;
   }
-  label {
+  .add-form__label {
     display: block;
     margin: .8rem 0 1.5rem;
   }
-  .userInput {
+  .add-form__input {
     display: block;
     width: 100%;
     padding: .5rem;
+    box-sizing: border-box;
   }
-  .userInput--select {
+  .add-form__select {
     display: block;
     width: 100%;
     padding: .5rem;

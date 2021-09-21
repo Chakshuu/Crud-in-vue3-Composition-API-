@@ -2,7 +2,7 @@
   <div>
     <div class="c-user-list">
       <h1 class="c-user-list__header">User List</h1>
-      <table class="table_layout">
+      <table class="table-layout">
         <thead>
           <tr>
             <th>SNo.</th>
@@ -115,7 +115,7 @@ export default {
     color: white;
     background-color: red;
   }
-  .table_layout {
+  .table-layout {
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -126,15 +126,15 @@ export default {
     text-align: center;
   }
 
-  .table_layout tbody tr:nth-of-type(even) {
+  .table-layout tbody tr:nth-of-type(even) {
     background-color: #ebe7e7;
   }
 
-  .table_layout th,
-  .table_layout td {
+  .table-layout th,
+  .table-layout td {
     padding: .4rem .8rem .2rem;
   }
-  .table_layout tbody tr {
+  .table-layout tbody tr {
     border-bottom: .2rem .3rem solid #dddddd;
   }
   .add-link {

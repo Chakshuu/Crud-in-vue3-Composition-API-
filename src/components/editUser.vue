@@ -1,30 +1,30 @@
 <template>
   <div class="edit-user">
     <h2 class="header">Edit the User</h2>
-    <form>
-      <label>First Name:</label>
+    <form class="edit-form">
+      <label class="edit-form  edit-form__label">First Name:</label>
       <input
-        class="userInput"
+        class="edit-form  edit-form__input"
         placeholder="localstore.user.fname"
         v-model="localstore.user.fname"
         type="text"
         required/>
-      <label>Last Name:</label>
+      <label class="edit-form  edit-form__label">Last Name:</label>
       <input
-        class="userInput"
+        class="edit-form  edit-form__input"
         placeholder="localstore.user.lname"
         v-model="localstore.user.lname"
         type="text"
         required/>
-      <label>Age</label>
+      <label class="edit-form  edit-form__label">Age</label>
       <input
-        class="userInput"
+        class="edit-form  edit-form__input"
         placeholder="localstore.user.age"
         v-model="localstore.user.age"
         type="number"
         required />
-      <label>Gender</label>
-      <select class="userInput  userInput--select" v-model="localstore.user.gender">
+      <label class="edit-form  edit-form__label">Gender</label>
+      <select class="edit-form  edit-form__select" v-model="localstore.user.gender">
         <option>Male</option>
         <option>Female</option>
         <option>Others</option>
@@ -81,9 +81,6 @@ export default {
 </script>
 
 <style scoped>
-  .edit-user * {
-    box-sizing: border-box;
-  }
   .edit-user {
     margin: 1rem auto;
     max-width: 35rem;
@@ -91,22 +88,20 @@ export default {
   .header {
     text-align: center;
   }
-  label {
+  .edit-form__label {
     display: block;
     margin: .8rem 0 1.5rem;
   }
-  .userInput {
+  .edit-form__input {
     display: block;
     width: 100%;
     padding: .5rem;
+    box-sizing: border-box
   }
-  .userInput--select {
+  .edit-form__select {
     display: block;
     width: 100%;
     padding: .5rem;
-  }
-  h3 {
-    margin-top: 1rem;
   }
   .button_property {
     text-align: center;
